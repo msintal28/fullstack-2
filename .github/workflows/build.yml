@@ -7,7 +7,13 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Test
-        run: echo "Amigoscode"
-      - name: Test 2
-        run: echo "Amigoscode2"
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: JDK
+        uses: actions/setup-java@v5
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+      - name: Maven Clean Verify
+        run: mvn -B -ntb clean verify
+
