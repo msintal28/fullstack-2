@@ -9,3 +9,5 @@ jobs:
     steps:
       - name: Test
         run: echo "Amigoscode"
+      - name: Test 2
+        run: echo "Amigoscode2"
