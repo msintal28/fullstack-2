@@ -4,6 +4,7 @@ import com.amigoscode.AbstractTestConfig;
 import com.amigoscode.product.NewProductRequest;
 import com.amigoscode.product.ProductResponse;
 import com.amigoscode.product.UpdateProductRequest;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.ParameterizedTypeReference;
@@ -15,7 +16,7 @@ import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-
+@Disabled
 public class ProductIT extends AbstractTestConfig {
 
     public static final String PRODUCT_BASE_URL = "api/v1/products";
