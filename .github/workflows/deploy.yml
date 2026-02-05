@@ -46,13 +46,15 @@ jobs:
       - name: Check if provided docker image exists
         if: ${{ github.event.inputs.build_number != '' }}
         run: |
-          IMAGE_NAME="${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE_NAME }}":${{ github.event.inputs.build_number }}"
+          IMAGE_NAME="${{ env.DOCKER_USERNAME }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.build_number }}"
           echo "checking if $IMAGE_NAME exists"
           if ! docker manifest inspect "$IMAGE_NAME" > /dev/null 2>&1; then
             echo "provided image $IMAGE_NAME does not exist. exiting..."
+            exit 1
           fi
           echo "provided image $IMAGE_NAME exist"
       - name: Maven Clean Verify
+        if: ${{ github.event.inputs.build_number == '' }}
         run: mvn -B -ntp clean verify jib:build -Ddocker.image.tag=$BUILD_NUMBER
       - name: Setup SSH Agent
         uses: webfactory/ssh-agent@v0.9.0
