@@ -22,7 +22,6 @@ import static org.assertj.core.api.Assertions.assertThat;
         replace = AutoConfigureTestDatabase.Replace.NONE
 )
 @Testcontainers
-@Disabled
 class ProductRepositoryTest {
 
     @Container
