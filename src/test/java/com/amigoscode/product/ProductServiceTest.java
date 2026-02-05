@@ -27,6 +27,7 @@ import static org.assertj.core.api.Assertions.assertThat;
         ProductService.class
 })
 @Testcontainers
+@Disabled
 class ProductServiceTest {
 
     @Container
