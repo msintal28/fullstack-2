@@ -25,8 +25,8 @@ jobs:
         uses: actions/checkout@v6
       - name: Send slack message
         run: >
-          curl -X POST -H 'Content-type: application/json' 
-          --data '{"text":"${{ github.event.head_commit.message }} - https://${{ github.repository }}/commit/${{ github.sha }}"}' 
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":"${{ github.event.head_commit.message }} - https://${{ github.repository }}/commit/${{ github.sha }}"}'
           ${{ env.SLACK_WEBOOK_URL }}
       - name: JDK
         if: ${{ github.event.inputs.build_number == '' }}
