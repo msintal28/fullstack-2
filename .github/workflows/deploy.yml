@@ -18,7 +18,7 @@ jobs:
       DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       EC2_SSH_PRIVATE_KEY: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
       EC2_PUBLIC_IP_ADDRESS: ${{ secrets.EC2_PUBLIC_IP_ADDRESS }}
-      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBOOK_URL }}
+      SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
     steps:
       - name: Checkout
         if: ${{ github.event.inputs.build_number == '' }}
@@ -27,7 +27,7 @@ jobs:
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{"text":"${{ github.event.head_commit.message }} - https://${{ github.repository }}/commit/${{ github.sha }}"}'
-          ${{ env.SLACK_WEBOOK_URL }}
+          ${{ env.SLACK_WEBHOOK_URL }}
       - name: JDK
         if: ${{ github.event.inputs.build_number == '' }}
         uses: actions/setup-java@v5
@@ -83,4 +83,4 @@ jobs:
         run: >
           curl -X POST -H 'Content-type: application/json'
           --data '{"text":"Job status ${{ job.status }}"}'
-          ${{ env.SLACK_WEBOOK_URL }}
+          ${{ env.SLACK_WEBHOOK_URL }}
