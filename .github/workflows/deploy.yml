@@ -81,6 +81,6 @@ jobs:
       - name: Send slack message with status
         if: always ()
         run: >
-          curl -X POST -H 'Content-type: application/json' 
-          --data '{"text":"Job status ${{ job.status }}"}' 
+          curl -X POST -H 'Content-type: application/json'
+          --data '{"text":"Job status ${{ job.status }}"}'
           ${{ env.SLACK_WEBOOK_URL }}
