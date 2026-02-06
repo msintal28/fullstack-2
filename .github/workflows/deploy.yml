@@ -9,6 +9,7 @@ on:
         description: "The build number to deploy (optional)"
         required: false
         type: string
+
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
